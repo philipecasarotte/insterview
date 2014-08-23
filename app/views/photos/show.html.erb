@@ -1,0 +1,17 @@
+<h1>Photo Page</h1>
+<%= link_to "Back", new_photo_path %>
+<%= image_tag @photo.image.url(:medium) %>
+<%= @photo.caption %>
+<h2>Leave a Comment</h2>
+<%= form_for [@photo, @comment] do |form| %>
+  <%= form.label :comment %>
+  <%= form.text_area :comment %>
+  <%= form.submit "Post Comment" %>
+<% end %>
+<h2>Comments</h2>
+<dl>
+<% @comments.each do |comment| %>	
+	<dt>Username<%#= comment.user.name %></dt>
+	<dd><%= comment.comment %></dd>
+<% end %>
+</dl>

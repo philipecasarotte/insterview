@@ -10,4 +10,12 @@ feature "Photo" do
     expect(current_path).to eql(new_photo_path)
     expect(page).to have_content("Thanks for sharing your photo!")
   end
+  
+  scenario "post with invalid data" do
+    visit "/"
+    click_button "Share My Photo"
+    
+    expect(current_path).to eql(new_photo_path)
+    expect(page).to have_content("Can't share this.")
+  end
 end

@@ -1,6 +1,8 @@
 class  PhotosController < ApplicationController 
   def show
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
+    @comments = @photo.comments.all
   end
 
   def new
@@ -11,9 +13,11 @@ class  PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
-      redirect_to(new_photo_path, :notice => "Thanks for sharing your photo!")
+      flash[:notice] = "Thanks for sharing your photo!"
+      redirect_to new_photo_path
     else
-      redirect_to(new_photo_path, :notice => "Can't share this.")
+      flash[:error] = "Can't share this."
+      redirect_to new_photo_path
     end
   end
   
