@@ -2,12 +2,17 @@ class  CommentsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    if @comment = @photo.comments.create!(comment_params)
-      flash[:notice] = "Thansk for posting!"
+    if comment_params[:comment] != ""
+      if @comment = @photo.comments.create!(comment_params)
+        flash[:notice] = "Thanks for posting!"
+      else
+        flash[:error] =  "Nope! Nope!"      
+      end
+      redirect_to @photo          
     else
-      flash[:error] =  "Nope! Nope!"
+      flash[:error] =  "Nope! Nope!"            
+      redirect_to @photo          
     end
-    redirect_to @photo
   end
   
   private
