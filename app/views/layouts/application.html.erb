@@ -2,16 +2,29 @@
 <html>
 <head>
   <title>Insterview</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">  
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<div class="container">
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>	
+	
 <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
 <% end -%>
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>
