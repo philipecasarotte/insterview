@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="col col-lg-6">
 		<h1>Share Your Picture</h1>
-		<%= form_for @photo, :url => photos_path, :html => { :multipart => true, :class => "form-inline" } do |form| %>
+		<%= form_for [@photo], :url => photos_path, :html => { :multipart => true, :class => "form-inline" } do |form| %>
 		<div class="input-group">
+		  <%= form.hidden_field :user_id, :value => current_user.id rescue "" %>
 		  <%= form.label :caption %>
 		  <%= form.text_area :caption %>
 		  <%= form.label :image %>
@@ -12,7 +13,7 @@
 		<% end %>
 	</div>
 
-	<div class="col col-lg-6"></div>
+	<div class="col col-lg-6">
 		<h1>Recent Photos</h1>
 		<ul>
 		<% @photos.each do |photo| %>
@@ -20,6 +21,7 @@
 				<%= link_to photo do %>
 					<%= image_tag photo.image.url(:thumb) %>
 					<%= photo.caption %>
+					<small>by <%= photo.user.name rescue "Guest User" %></small>
 				<% end %>
 			</li>
 		<% end %>

@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   default_scope { order('created_at DESC') }
   
   has_many :comments
+  belongs_to :user
 
   validates_presence_of :caption, :message => "Your photo must have a caption."
 end
