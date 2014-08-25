@@ -1,18 +1,22 @@
 <h1>Photo Page</h1>
-<%= link_to "Back", new_photo_path %>
-<%= image_tag @photo.image.url(:medium) %>
+<%= link_to "Back", new_photo_path, :class => "btn btn-danger" %>
+<%= image_tag @photo.image.url(:medium), :class => "img-circle img-responsive" %>
 <%= @photo.caption %>
 <h2>Leave a Comment</h2>
 <%= form_for [@photo, @comment] do |form| %>
   <%= form.hidden_field :user_id, :value => current_user.id rescue "" %>
   <%= form.label :comment %>
-  <%= form.text_area :comment %>
-  <%= form.submit "Post Comment" %>
+  <%= form.text_area :comment, :class => "form-control" %>
+  <%= form.submit "Post Comment", :class => "btn-lg btn-warning" %>
 <% end %>
 <h2>Comments</h2>
+<% if @comments.count > 0 %>
 <dl>
 <% @comments.each do |comment| %>	
 	<dt><%= comment.user.name rescue "Guest" %></dt>
 	<dd><%= comment.comment %></dd>
 <% end %>
 </dl>
+<% else %>
+<p class="alert alert-warning">No Comments have been made yet.</p>
+<% end %>

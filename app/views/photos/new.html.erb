@@ -2,14 +2,12 @@
 	<div class="col col-lg-6">
 		<h1>Share Your Picture</h1>
 		<%= form_for [@photo], :url => photos_path, :html => { :multipart => true, :class => "form-inline" } do |form| %>
-		<div class="input-group">
 		  <%= form.hidden_field :user_id, :value => current_user.id rescue "" %>
 		  <%= form.label :caption %>
-		  <%= form.text_area :caption %>
+		  <%= form.text_area :caption, :class => "form-control" %>
 		  <%= form.label :image %>
-		  <%= form.file_field :image %>
-		  <%= form.submit "Share My Photo" %>
-		</div>		  
+		  <%= form.file_field :image, :class => "form-control" %>
+		  <%= form.submit "Share My Photo", :class => "btn-lg btn-warning" %>
 		<% end %>
 	</div>
 
@@ -19,8 +17,8 @@
 		<% @photos.each do |photo| %>
 			<li>
 				<%= link_to photo do %>
-					<%= image_tag photo.image.url(:thumb) %>
-					<%= photo.caption %>
+					<%= image_tag photo.image.url(:medium), :class => "img-circle img-responsive" %>
+					<big><%= photo.caption %></big>
 					<small>by <%= photo.user.name rescue "Guest User" %></small>
 				<% end %>
 			</li>
