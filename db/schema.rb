@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140824060336) do
   end
 
   create_table "photos", force: true do |t|
-    t.text     "caption"
+    t.string   "caption"
     t.integer  "comments_count"
     t.integer  "likes_count"
     t.string   "image_file_name"
