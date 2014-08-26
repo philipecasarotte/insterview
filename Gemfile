@@ -13,6 +13,8 @@ gem "omniauth-facebook", "1.4.0"
 group :development, :test do
   gem "rspec-rails"
   gem "pry-meta"
+  gem "factory_girl"
+  gem "cucumber"
 end
 
 group :test do

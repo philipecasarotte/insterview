@@ -5,6 +5,7 @@ feature "Photo" do
   scenario "post with valid data" do
     visit "/"
     fill_in "Caption", with: "This Photo looks awesome!"
+    attach_file "Image", "#{Rails.root}/spec/fixtures/files/test.jpg"
     click_button "Share My Photo"
     
     expect(current_path).to eql(new_photo_path)
