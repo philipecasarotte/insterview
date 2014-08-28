@@ -15,4 +15,13 @@ describe "Comment" do
       expect(comment.errors[:photo_id]).not_to be_empty
     end
   end
+  
+  # describe "relationships" do
+#     it "belongs to photo" do
+#       should_validate_presence_of :comment
+#     end
+#     it "belongs to user" do
+#       should belong_to(:user)
+#     end
+#   end
 end

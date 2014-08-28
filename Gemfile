@@ -19,4 +19,5 @@ group :test do
   gem "capybara"
   gem "factory_girl"
   gem "cucumber"
+  gem "shoulda"
 end
