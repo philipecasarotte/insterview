@@ -8,5 +8,5 @@ class Photo < ActiveRecord::Base
   has_many :comments
   belongs_to :user
 
-  validates_presence_of :caption, :message => "Your photo must have a caption."
+  validates_presence_of :caption
 end

@@ -1,6 +1,10 @@
-require "spec_helper"
+require "rails_helper"
 
-describe "Photo" do
+describe Photo do
+  it { should validate_presence_of(:caption) }
+  it { should belong_to(:user) }
+  it { should have_many(:comments) }  
+
   describe "validations" do
     it "requires caption" do
       photo = Photo.new(caption: nil)

@@ -1,6 +1,10 @@
 require "spec_helper"
+require "rails_helper"
 
-describe "Comment" do
+describe Comment do
+  it { should belong_to(:user) }
+  it { should validate_presence_of(:comment) }
+  
   describe "validations" do
     it "requires comment" do
       comment = Comment.new(comment: nil)
@@ -15,13 +19,4 @@ describe "Comment" do
       expect(comment.errors[:photo_id]).not_to be_empty
     end
   end
-  
-  # describe "relationships" do
-#     it "belongs to photo" do
-#       should_validate_presence_of :comment
-#     end
-#     it "belongs to user" do
-#       should belong_to(:user)
-#     end
-#   end
 end

@@ -12,12 +12,9 @@ gem "omniauth-facebook", "1.4.0"
 
 group :development, :test do
   gem "rspec-rails"
-  gem "pry-meta"
-end
-
-group :test do
+  gem "shoulda-matchers"
   gem "capybara"
   gem "factory_girl"
   gem "cucumber"
-  gem "shoulda"
+  gem "pry-meta"
 end
