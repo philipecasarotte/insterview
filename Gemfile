@@ -9,6 +9,7 @@ gem "uglifier", ">= 1.3.0"
 gem "paperclip"
 gem "omniauth"
 gem "omniauth-facebook", "1.4.0"
+gem "rails_admin"
 
 group :development, :test do
   gem "rspec-rails"
