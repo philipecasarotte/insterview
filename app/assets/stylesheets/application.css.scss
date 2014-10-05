@@ -13,11 +13,16 @@ $border-color:#666;
 
 body {background-color:$light-gray;}
 
-#instalist {margin:0;padding:0;}
-#instalist li { @include border-radius(10px);border:solid 1px $border-color;list-style:none;text-align:center;margin-bottom:1em;width:100%;float:left;}
-#instalist li big {display:block;}
+#instalist {
+	margin:0;padding:0;
+	
+	li { @include border-radius(10px);border:solid 1px $border-color;list-style:none;text-align:center;margin-bottom:1em;width:100%;float:left;}
+	li big {display:block;}
+}
 
-form textarea,
-form input {width:100%;}
-form label {display:block;cursor:pointer;}
-form input[type="submit"] {float:right;margin-top:2em;}
+form {
+	textarea,
+	input {width:100%;}
+	label {display:block;cursor:pointer;}
+	input[type="submit"] {float:right;margin-top:2em;}
+}
